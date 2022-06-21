@@ -1,24 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import {
+  OuterWrapper,
+  RCardWrapper
+} from './AppStyled'
+import Card from "./components/Card/Card";
 
 function App() {
+  
+  const generateRaceCards = () => {
+    let cardArray = [];
+    for (let i = 0 ; i <= 3 ; i++) {
+      cardArray.push(
+        <Card 
+          totalHeight={350} 
+          totalWidth={200} 
+          marginRight={30} 
+          marginLeft={30} 
+          rId={i}
+          imgHeight={450}
+          imgWidth={190}
+        />
+      )
+    }
+    return cardArray;
+  }
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <OuterWrapper>
+      <RCardWrapper>
+        {generateRaceCards()}
+      </RCardWrapper>
+    </OuterWrapper>
   );
 }
 
