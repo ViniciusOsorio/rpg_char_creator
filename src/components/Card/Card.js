@@ -92,6 +92,8 @@ const Card = (props) => {
             totalWidth={props.totalWidth}
             marginLeft={props.marginLeft}
             marginRight={props.marginRight}
+            isSelected={props.isSelected}
+            onClick={props.onClick}
         >
             <ImgDiv
                 imgHeight={props.imgHeight}
@@ -101,7 +103,7 @@ const Card = (props) => {
             </ImgDiv>
             <TextDiv>
                 <StyledTitle>{title}</StyledTitle>
-                <StyledDescription>{description}</StyledDescription>
+                <StyledDescription isSelected={props.isSelected}>{description}</StyledDescription>
             </TextDiv>
         </OuterWrapper>
     )

@@ -6,9 +6,13 @@ import {
   GenderButton,
   StyledInput,
   InputSection,
-  GenderLabel
+  GenderLabel,
+  ContentWrapper,
+  InputDiv,
+  StyledLabel
 } from './AppStyled'
 import Card from "./components/Card/Card";
+import NavBar from './components/NavBar/NavBar';
 import { FaVenus, FaMars, FaGenderless } from 'react-icons/fa';
 
 function App() {
@@ -24,13 +28,13 @@ function App() {
     for (let i=0 ; i < genders.length ; i++) {
       switch (i){
         case 0:
-          genderIcon = <FaVenus size={50}/>
+          genderIcon = <FaVenus size={50} color={isSelectedGender === i ? '#f0d83c' : '#000'}/>
           break;
         case 1:
-          genderIcon = <FaMars size={50}/>
+          genderIcon = <FaMars size={50} color={isSelectedGender === i ? '#f0d83c' : '#000'}/>
           break;
         case 2:
-          genderIcon = <FaGenderless size={50}/>
+          genderIcon = <FaGenderless size={50} color={isSelectedGender === i ? '#f0d83c' : '#000'}/>
           break;
         default:
           genderIcon = <></>;
@@ -41,7 +45,7 @@ function App() {
           isSelected={isSelectedGender === i} 
           onClick={() => handleGender(i)}>
           {genderIcon}
-          <GenderLabel>
+          <GenderLabel style={{color: isSelectedGender===i ? '#f0d83c' : '#000'}}>
             {genders[i]}
           </GenderLabel>
         </GenderButton>
@@ -62,6 +66,9 @@ function App() {
           rId={i}
           imgHeight={480}
           // imgWidth={190}
+          value={i} 
+          isSelected={isSelectedR === i} 
+          onClick={() => handleRSelect(i)}
         />
       )
     }
@@ -80,6 +87,9 @@ function App() {
           cId={i}
           imgHeight={480}
           // imgWidth={190}
+          value={i} 
+          isSelected={isSelectedClass === i} 
+          onClick={() => handleClassSelect(i)}
         />
       )
     }
@@ -88,24 +98,47 @@ function App() {
 
   const handleGender = (num) => {
     setIsSelectedGender(num)
+    console.log(num)
+  }
+
+  const handleRSelect = (num) => {
+    setSelectedR(num)
+    console.log(num)
+  }
+
+  const handleClassSelect = (num) => {
+    setSelectedClass(num)
+    console.log(num)
   }
   
   return (
     <OuterWrapper>
-      <InputSection>
-        <StyledInput
-          width={400}
-        />
-      </InputSection>      
-      <GenderSection>        
-        {generateGenderButtons()}
-      </GenderSection>
-      <CardSection>
-        {generateRCards()}
-      </CardSection>
-      <CardSection>
-        {genereteClassCards()}
-      </CardSection>
+      <NavBar />
+      <ContentWrapper>
+        <InputSection>
+          <InputDiv>
+            <StyledLabel>Name</StyledLabel>
+            <StyledInput
+              width={400}
+            />
+          </InputDiv>
+          <InputDiv>
+            <StyledLabel>Age</StyledLabel>
+            <StyledInput
+              width={100}
+            />
+          </InputDiv>
+        </InputSection>      
+        <GenderSection>        
+          {generateGenderButtons()}
+        </GenderSection>
+        <CardSection>
+          {generateRCards()}
+        </CardSection>
+        <CardSection>
+          {genereteClassCards()}
+        </CardSection>
+      </ContentWrapper>
     </OuterWrapper>
   );
 }

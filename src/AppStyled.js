@@ -23,6 +23,11 @@ export const GenderSection = styled.div`
     padding: 10px;
 `
 
+export const GenderLabel = styled.label`
+    font-size: 18px;
+    padding-top: 15px;
+`
+
 export const GenderButton = styled.button`
     display: flex;
     flex-direction: column;
@@ -33,12 +38,11 @@ export const GenderButton = styled.button`
     margin-right: 50px;
     margin-left: 50px;
     border-radius: 10px;
-    background-color: ${props => props.isSelected ? '#bfac30' : '#f0d83c'};
-`
+    background-color: ${props => props.isSelected ? '#000' : '#f0d83c'};
 
-export const GenderLabel = styled.label`
-    font-size: 18px;
-    padding-top: 15px;
+    &:hover{
+        background-color: ${props => props.isSelected ? '#000' : '#bfac30'};
+    }
 `
 
 export const StyledInput = styled.input`
@@ -54,5 +58,24 @@ export const StyledInput = styled.input`
 export const InputSection = styled.div`
     display: flex;
     flex-direction: row;
-    margin-top: 40px
+    margin-top: 40px;
+`
+
+export const ContentWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0px;
+`
+
+export const InputDiv = styled.div`
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+`
+
+export const StyledLabel = styled.label`
+    font-size: 24px;
+    margin-bottom: 5px;
+    font-weight: bold;
 `
